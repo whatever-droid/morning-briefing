@@ -1,0 +1,48 @@
+name: morning-briefing
+
+on:
+  schedule:
+    # GitHub Actions cron은 UTC 기준. 09:40 KST = 00:40 UTC.
+    # (참고: 깃허브 부하에 따라 몇 분~수십 분 지연될 수 있습니다.)
+    - cron: "40 0 * * *"
+  workflow_dispatch: {}  # 수동 실행 버튼(테스트용)
+
+permissions:
+  contents: write  # 강의 페이지(docs/)를 커밋·푸시하려면 필요
+
+jobs:
+  briefing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+
+      # 1) 오늘의 강의 생성 + 웹페이지(docs/) 작성
+      - name: Build lesson page
+        run: python send_briefing.py build
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_REPO: ${{ github.repository }}
+          BRIEFING_MODEL: claude-sonnet-4-6
+
+      # 2) 페이지를 커밋·푸시 → GitHub Pages 게시
+      - name: Publish page
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git commit -m "lesson $(date -u +%F)" || echo "변경 없음"
+          git push
+
+      # 3) 카카오로 짧은 한 통 + '전문 읽기' 링크 전송
+      - name: Send KakaoTalk
+        run: python send_briefing.py send
+        env:
+          KAKAO_REST_API_KEY: ${{ secrets.KAKAO_REST_API_KEY }}
+          KAKAO_REFRESH_TOKEN: ${{ secrets.KAKAO_REFRESH_TOKEN }}
+          KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET }}
+          GH_REPO: ${{ github.repository }}
+          GH_PAT: ${{ secrets.GH_PAT }}

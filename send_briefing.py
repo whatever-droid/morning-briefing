@@ -145,8 +145,8 @@ def generate_body(now, lesson, api_key, model):
     return "".join(b.text for b in msg.content if b.type == "text").strip()
 
 
-def compose_kakao_message(now, reminders, lesson):
-    """카톡으로 보낼 짧은 한 통(전체 강의는 웹페이지에서)."""
+def compose_kakao_message(now, reminders, lesson, link_url):
+    """카톡으로 보낼 짧은 한 통. 전체 강의는 아래 '글자 링크'로 연다(버튼은 PC/도메인 문제로 제외)."""
     wd = "월화수목금토일"[now.weekday()]
     lines = [f"🌤️ 좋은 아침이에요! {now.month}월 {now.day}일 ({wd})", ""]
     if reminders:
@@ -159,10 +159,11 @@ def compose_kakao_message(now, reminders, lesson):
         label, no, title, _prev, _next = lesson
         lines.append(f"📚 오늘의 {label} · {no}강")
         lines.append(f"〈{title}〉")
-        lines.append("👇 '전문 읽기'에서 오늘 강의를 만나보세요!")
     else:
         lines.append("🎨 오늘의 이야기")
-        lines.append("👇 '전문 읽기'에서 오늘의 이야기를 만나보세요!")
+    lines.append("")
+    lines.append("👇 전문 읽기 (아래 주소를 누르세요)")
+    lines.append(link_url)
     return "\n".join(lines)
 
 
@@ -188,10 +189,12 @@ def do_build(now):
         label, title, next_line = "오늘의 이야기", "주말의 한 조각", None
 
     lesson_page.write_pages(DOCS_DIR, date_str, date_human, label, title, body, next_line)
+    lesson_page.write_index(DOCS_DIR)  # 지난 강의 모아보기 목록 갱신
 
+    link = page_link(date_str)
     payload = {
-        "text": compose_kakao_message(now, reminders, lesson),
-        "link": page_link(date_str),
+        "text": compose_kakao_message(now, reminders, lesson, link),
+        "link": link,
     }
     os.makedirs(os.path.dirname(MESSAGE_FILE), exist_ok=True)
     with open(MESSAGE_FILE, "w", encoding="utf-8") as f:
@@ -288,7 +291,8 @@ def do_send(payload, now):
 
     chunks = chunk_text(payload["text"])
     for i, chunk in enumerate(chunks):
-        send_kakao_text(access_token, chunk, payload["link"], button=(i == len(chunks) - 1))
+        # 버튼은 localhost로 튕기는 문제가 있어 끔. 대신 메시지 본문의 '글자 링크'로 연다.
+        send_kakao_text(access_token, chunk, payload["link"], button=False)
     print(f"✅ 전송 완료 — 말풍선 {len(chunks)}개 ({now:%Y-%m-%d %H:%M} KST)")
     maybe_rotate_secret(new_refresh)
 

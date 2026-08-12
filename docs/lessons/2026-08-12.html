@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이미지 인식 — CNN과 ImageNet의 순간 · 아침 강의</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin:0; background:#f6f5f2; color:#232323;
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Malgun Gothic",sans-serif;
+    line-height:1.78; -webkit-text-size-adjust:100%; }
+  .wrap { max-width:680px; margin:0 auto; padding:34px 22px 72px; }
+  .date { color:#8a8a8a; font-size:14px; letter-spacing:.02em; }
+  .label { display:inline-block; margin-top:10px; padding:4px 13px; border-radius:999px;
+    background:#2b2b2b; color:#fff; font-size:13px; font-weight:600; }
+  h1 { font-size:25px; line-height:1.4; margin:14px 0 26px; letter-spacing:-.01em; }
+  .body p { margin:0 0 19px; font-size:17px; }
+  .next { margin-top:34px; padding:16px 18px; background:#eceae4; border-radius:14px;
+    font-size:15px; color:#555; }
+  .foot { margin-top:40px; text-align:center; font-size:14px; }
+  .foot a { color:#3a6ea5; text-decoration:none; font-weight:600; }
+  .foot .sub { display:block; margin-top:12px; color:#b0b0b0; font-size:13px; }
+  @media (prefers-color-scheme: dark) {
+    body { background:#191919; color:#e9e9e9; }
+    .label { background:#e9e9e9; color:#191919; }
+    .next { background:#272727; color:#bcbcbc; }
+    .foot a { color:#7fb0e8; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="date">2026년 8월 12일 수요일</div>
+    <span class="label">AI 공부 · 8강</span>
+    <h1>이미지 인식 — CNN과 ImageNet의 순간</h1>
+    <div class="body"><p>지난주엔 딥러닝이 어떻게 세상을 바꿔놓았는지 큰 그림을 살펴봤죠. 오늘은 그 변화가 가장 극적으로 터져 나온 순간, 바로 **컴퓨터가 사진 속 사물을 사람만큼 알아보게 된 이야기**를 함께 읽어보겠습니다.</p>
+    <p>---</p>
+    <p>우리는 사진을 보면 순식간에 &quot;강아지네&quot;, &quot;저건 고양이야&quot;라고 알아봅니다. 그런데 컴퓨터에게 사진이란 그냥 수백만 개의 숫자 덩어리예요. 오랫동안 과학자들은 이 숫자들에서 의미를 뽑아내는 데 애를 먹었습니다. 그러다 2012년, 한 대회에서 모든 것이 뒤집힙니다.</p>
+    <p>**ImageNet**은 1,400만 장이 넘는 사진에 이름표를 붙인 거대한 사진 도서관이에요. 매년 이 도서관을 활용한 &#x27;사진 맞히기 대회&#x27;가 열렸는데, 2012년까지 오류율이 26% 수준에서 맴돌았습니다. 네 장 중 한 장은 틀린다는 뜻이죠. 그런데 그해, 제프리 힌턴 교수팀의 대학원생 **알렉스 크리제프스키**가 **AlexNet**이라는 모델을 들고 나타나 오류율을 단숨에 16%로 떨어뜨렸습니다. 그 순간 AI 연구자들은 전부 숨을 멈췄다고 해요.</p>
+    <p>AlexNet이 사용한 핵심 기술이 바로 **CNN(합성곱 신경망)**입니다. 어려운 이름이지만, 생각은 단순해요. 사람이 사진을 볼 때 눈이 &#x27;귀 모양&#x27;, &#x27;털의 결&#x27;, &#x27;눈 위치&#x27; 같은 작은 특징들을 차례로 조합해 전체를 파악하잖아요. CNN도 똑같이, 사진을 아주 작은 조각으로 나눠 특징을 찾고, 그것들을 점점 넓게 합쳐가며 &quot;이건 강아지!&quot;라는 결론에 도달합니다. 마치 퍼즐 조각을 모아 그림을 완성하는 것처럼요.</p>
+    <p>이 사건 이후 구글, 페이스북, 애플이 모두 이 기술로 달려들었고, 지금 우리가 스마트폰으로 사진을 찍으면 자동으로 얼굴을 인식하고 앨범을 분류해 주는 기능이 모두 여기서 태어났습니다.</p>
+    <p>**📌 직접 찾아보세요:** &#x27;AlexNet 2012&#x27; 또는 &#x27;ImageNet Challenge&#x27; — 당시 결과표 이미지 하나만 봐도 얼마나 충격적인 도약이었는지 눈으로 확인할 수 있어요.</p>
+    <p>---</p>
+    <p>**오늘의 핵심:** CNN은 사진을 작은 특징 조각으로 쪼개어 읽는 눈이고, 2012년 AlexNet은 그 눈이 사람에 맞먹을 수 있다는 것을 처음으로 증명한 역사적 순간이었습니다.</p></div>
+    <div class="next">🔜 다음 시간: AI 공부 — 자연어 처리의 역사</div>
+    <div class="foot">
+      <a href="../">📚 지난 강의 전체 보기</a>
+      <span class="sub">매일 아침 · 나의 교양 강의</span>
+    </div>
+  </div>
+</body>
+</html>

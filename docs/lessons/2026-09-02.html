@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시퀀스 다루기 — RNN과 LSTM · 아침 강의</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin:0; background:#f6f5f2; color:#232323;
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Malgun Gothic",sans-serif;
+    line-height:1.78; -webkit-text-size-adjust:100%; }
+  .wrap { max-width:680px; margin:0 auto; padding:34px 22px 72px; }
+  .date { color:#8a8a8a; font-size:14px; letter-spacing:.02em; }
+  .label { display:inline-block; margin-top:10px; padding:4px 13px; border-radius:999px;
+    background:#2b2b2b; color:#fff; font-size:13px; font-weight:600; }
+  h1 { font-size:25px; line-height:1.4; margin:14px 0 26px; letter-spacing:-.01em; }
+  .body p { margin:0 0 19px; font-size:17px; }
+  .next { margin-top:34px; padding:16px 18px; background:#eceae4; border-radius:14px;
+    font-size:15px; color:#555; }
+  .foot { margin-top:40px; text-align:center; font-size:14px; }
+  .foot a { color:#3a6ea5; text-decoration:none; font-weight:600; }
+  .foot .sub { display:block; margin-top:12px; color:#b0b0b0; font-size:13px; }
+  @media (prefers-color-scheme: dark) {
+    body { background:#191919; color:#e9e9e9; }
+    .label { background:#e9e9e9; color:#191919; }
+    .next { background:#272727; color:#bcbcbc; }
+    .foot a { color:#7fb0e8; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="date">2026년 9월 2일 수요일</div>
+    <span class="label">AI 공부 · 11강</span>
+    <h1>시퀀스 다루기 — RNN과 LSTM</h1>
+    <div class="body"><p>지난주엔 단어를 숫자로 바꾸는 임베딩을 배웠죠. 그런데 단어 하나하나를 숫자로 만들었다 해도, 문제가 하나 남아 있어요. &quot;나는 밥을 먹었다&quot;에서 &#x27;먹었다&#x27;의 의미는 앞에 &#x27;밥을&#x27;이 있어야 제대로 이해되잖아요. 오늘은 AI가 이런 **순서와 흐름**을 어떻게 기억하는지 배웁니다.</p>
+    <p>---</p>
+    <p>우리가 소설을 읽을 때를 생각해 보세요. 1페이지를 읽고 나면, 그 내용을 머릿속에 담은 채 2페이지를 읽죠. 앞의 맥락이 뒤의 이해를 돕는 거예요. **RNN(순환 신경망, Recurrent Neural Network)**은 바로 이 방식을 흉내 냅니다. 단어를 하나씩 읽을 때마다 &quot;지금까지 읽은 내용의 요약&quot;을 다음 단계로 넘겨주는 거예요. 이 요약을 **은닉 상태(hidden state)**라고 불러요. 쉽게 말하면, AI의 &#x27;단기 메모지&#x27; 같은 거예요.</p>
+    <p>그런데 RNN에는 치명적인 약점이 있어요. 문장이 길어지면 앞부분을 까먹어 버려요. &quot;어제 공원에서 만난, 오랫동안 연락이 끊겼던, 학창 시절 친구가 **웃었다**&quot;처럼 주어와 서술어 사이가 멀면, RNN은 &#x27;웃었다&#x27;의 주어가 누군지 잊어버리는 거죠. 이 문제를 해결하려고 나온 것이 **LSTM(Long Short-Term Memory)**입니다. 직역하면 &#x27;길고 짧은 기억을 함께 다루는 구조&#x27;예요. LSTM은 메모지 옆에 **금고**를 하나 더 두고, 정말 중요한 정보는 금고에 잠가 두었다가 필요할 때 꺼내 씁니다. 덕분에 훨씬 긴 맥락도 기억할 수 있게 됐어요.</p>
+    <p>---</p>
+    <p>구체적인 예를 들어볼게요. 구글 번역기가 2016년 이전까지는 엉터리 번역으로 유명했는데, 그해 LSTM 기반의 신경망 번역 시스템을 도입하자마자 번역 품질이 극적으로 향상됐어요. 언론에서 &quot;하룻밤 사이에 10년치 발전을 이뤘다&quot;고 표현했을 정도였죠. 긴 문장의 맥락을 기억하는 능력이 얼마나 중요한지 보여주는 생생한 사례예요.</p>
+    <p>오늘 찾아볼 키워드로 **&#x27;LSTM 시각화 (Distill.pub)&#x27;** 를 추천해요. 크리스토퍼 올라(Christopher Olah)가 만든 인터랙티브 설명인데, 그림만 봐도 LSTM이 어떻게 작동하는지 직관적으로 느껴집니다.</p>
+    <p>---</p>
+    <p>**오늘의 핵심:** RNN은 순서를 기억하는 AI의 단기 메모지이고, LSTM은 거기에 금고를 더해 중요한 맥락을 오래 붙들어 두는 기술이다.</p></div>
+    <div class="next">🔜 다음 시간: AI 공부 — 트랜스포머와 &#x27;어텐션&#x27;</div>
+    <div class="foot">
+      <a href="../">📚 지난 강의 전체 보기</a>
+      <span class="sub">매일 아침 · 나의 교양 강의</span>
+    </div>
+  </div>
+</body>
+</html>

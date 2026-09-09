@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>트랜스포머와 &#x27;어텐션&#x27; · 아침 강의</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin:0; background:#f6f5f2; color:#232323;
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Malgun Gothic",sans-serif;
+    line-height:1.78; -webkit-text-size-adjust:100%; }
+  .wrap { max-width:680px; margin:0 auto; padding:34px 22px 72px; }
+  .date { color:#8a8a8a; font-size:14px; letter-spacing:.02em; }
+  .label { display:inline-block; margin-top:10px; padding:4px 13px; border-radius:999px;
+    background:#2b2b2b; color:#fff; font-size:13px; font-weight:600; }
+  h1 { font-size:25px; line-height:1.4; margin:14px 0 26px; letter-spacing:-.01em; }
+  .body p { margin:0 0 19px; font-size:17px; }
+  .next { margin-top:34px; padding:16px 18px; background:#eceae4; border-radius:14px;
+    font-size:15px; color:#555; }
+  .foot { margin-top:40px; text-align:center; font-size:14px; }
+  .foot a { color:#3a6ea5; text-decoration:none; font-weight:600; }
+  .foot .sub { display:block; margin-top:12px; color:#b0b0b0; font-size:13px; }
+  @media (prefers-color-scheme: dark) {
+    body { background:#191919; color:#e9e9e9; }
+    .label { background:#e9e9e9; color:#191919; }
+    .next { background:#272727; color:#bcbcbc; }
+    .foot a { color:#7fb0e8; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="date">2026년 9월 9일 수요일</div>
+    <span class="label">AI 공부 · 12강</span>
+    <h1>트랜스포머와 &#x27;어텐션&#x27;</h1>
+    <div class="body"><p>## 12강. 트랜스포머와 &#x27;어텐션&#x27; — 모두를 동시에 바라보는 힘</p>
+    <p>오늘은 현대 AI의 심장부라 불리는 **트랜스포머(Transformer)**가 어떤 원리로 언어를 이해하는지 배웁니다.</p>
+    <p>---</p>
+    <p>지난주엔 RNN과 LSTM을 배웠죠. 그 친구들은 문장을 **왼쪽에서 오른쪽으로, 순서대로** 읽어나가는 방식이었어요. 마치 책을 한 글자씩 손가락으로 짚어가며 읽는 것처럼요. 그런데 여기엔 약점이 있었어요. 문장이 길어질수록 앞에서 읽은 내용을 점점 잊어버린다는 것, 기억하시나요?</p>
+    <p>2017년, 구글의 연구팀이 논문 하나를 발표합니다. 제목이 아주 도발적이에요. **&quot;Attention Is All You Need&quot;** — &#x27;어텐션, 그것만 있으면 돼.&#x27; 이 논문이 트랜스포머의 시작입니다.</p>
+    <p>**어텐션(Attention)**이란, 문장 속 모든 단어들이 서로를 &#x27;동시에&#x27; 바라보는 구조예요. 순서대로 읽지 않아요. 예를 들어 &quot;그는 케이크를 먹었는데, 너무 달아서 그것을 남겼다&quot;는 문장에서, &#x27;그것&#x27;이 케이크를 가리킨다는 걸 알려면 멀리 떨어진 단어들 사이의 관계를 한눈에 파악해야 하잖아요. 트랜스포머는 마치 반 전체 학생들이 칠판 앞에서 동시에 서로 눈을 마주치며 &quot;나는 너와 얼마나 관련 있지?&quot;를 계산하는 것처럼 작동합니다. 이걸 **셀프 어텐션(Self-Attention)**이라고 불러요.</p>
+    <p>이 구조 덕분에 트랜스포머는 긴 문장도, 복잡한 맥락도 훨씬 잘 이해하게 됐어요. 그리고 순서대로 계산하지 않아도 되니까 **병렬 처리** — 여러 계산을 동시에 — 가 가능해져서 학습 속도도 훨씬 빨라졌습니다. GPT, BERT, 그리고 지금 여러분과 대화하는 AI들이 모두 이 트랜스포머 구조 위에 서 있어요.</p>
+    <p>📌 **찾아보기 추천:** 논문 제목 **&quot;Attention Is All You Need&quot;** (2017, Vaswani 외) — 어렵더라도 첫 페이지 그림 한 번만 들여다보세요. 트랜스포머의 생김새가 한눈에 보입니다. 또는 유튜브에서 **&quot;어텐션 메커니즘 시각화&quot;** 를 검색하면 단어들이 서로를 얼마나 주목하는지 색깔로 보여주는 멋진 영상을 찾을 수 있어요.</p>
+    <p>---</p>
+    <p>**오늘의 핵심:** 트랜스포머는 문장을 순서대로 읽지 않고, 모든 단어가 동시에 서로를 바라보며 관계를 파악하는 &#x27;어텐션&#x27; 덕분에 언어를 훨씬 깊이 이해하게 되었다.</p></div>
+    <div class="next">🔜 다음 시간: AI 공부 — 언어모델(LLM)이란 무엇인가</div>
+    <div class="foot">
+      <a href="../">📚 지난 강의 전체 보기</a>
+      <span class="sub">매일 아침 · 나의 교양 강의</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>언어모델(LLM)이란 무엇인가 · 아침 강의</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin:0; background:#f6f5f2; color:#232323;
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Malgun Gothic",sans-serif;
+    line-height:1.78; -webkit-text-size-adjust:100%; }
+  .wrap { max-width:680px; margin:0 auto; padding:34px 22px 72px; }
+  .date { color:#8a8a8a; font-size:14px; letter-spacing:.02em; }
+  .label { display:inline-block; margin-top:10px; padding:4px 13px; border-radius:999px;
+    background:#2b2b2b; color:#fff; font-size:13px; font-weight:600; }
+  h1 { font-size:25px; line-height:1.4; margin:14px 0 26px; letter-spacing:-.01em; }
+  .body p { margin:0 0 19px; font-size:17px; }
+  .next { margin-top:34px; padding:16px 18px; background:#eceae4; border-radius:14px;
+    font-size:15px; color:#555; }
+  .foot { margin-top:40px; text-align:center; font-size:14px; }
+  .foot a { color:#3a6ea5; text-decoration:none; font-weight:600; }
+  .foot .sub { display:block; margin-top:12px; color:#b0b0b0; font-size:13px; }
+  @media (prefers-color-scheme: dark) {
+    body { background:#191919; color:#e9e9e9; }
+    .label { background:#e9e9e9; color:#191919; }
+    .next { background:#272727; color:#bcbcbc; }
+    .foot a { color:#7fb0e8; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="date">2026년 9월 16일 수요일</div>
+    <span class="label">AI 공부 · 13강</span>
+    <h1>언어모델(LLM)이란 무엇인가</h1>
+    <div class="body"><p>## 13강. 언어모델(LLM)이란 무엇인가</p>
+    <p>오늘은 AI가 어떻게 말을 &#x27;만들어 내는지&#x27;, 그 비밀 창고인 **언어모델(LLM)**이 무엇인지 알아봅니다.</p>
+    <p>---</p>
+    <p>지난주엔 트랜스포머와 어텐션을 배웠죠. AI가 문장 속 단어들의 관계를 파악하는 방식이었습니다. 오늘은 한 발 더 나아가, 그 구조 위에서 실제로 언어를 다루는 거대한 시스템, 즉 **LLM(Large Language Model, 대형 언어모델)**을 만나볼 차례입니다.</p>
+    <p>LLM을 가장 쉽게 설명하면 이렇습니다. &#x27;다음에 올 단어를 예측하는 기계&#x27;입니다. &quot;오늘 날씨가 정말 ___.&quot; 이 빈칸에 &#x27;좋다&#x27;, &#x27;덥다&#x27;, &#x27;맑다&#x27; 중 무엇이 올지 수십억 개의 문장을 읽으면서 감각을 익힌 것이죠. 단 하나의 다음 단어를 고르고, 또 그 다음 단어를 고르고, 그렇게 이어 붙이다 보면 어느새 완성된 문단이 됩니다. 마치 즉흥 연주자가 앞 소절을 듣고 다음 음표를 고르는 것처럼요.</p>
+    <p>여기서 **&#x27;대형(Large)&#x27;** 이라는 말이 중요합니다. 과거에도 다음 단어를 예측하는 모델은 있었지만, 매개변수(파라미터, 쉽게 말해 AI가 학습으로 조정하는 수많은 숫자 조각들)의 수가 수억, 수천억 개 규모로 커지면서 전혀 다른 능력이 생겨났습니다. 번역도 하고, 시도 쓰고, 코드도 짜는 것처럼요. 규모가 커지자 예상하지 못한 능력이 튀어나온 것, 이걸 연구자들은 **&#x27;창발(emergence)&#x27;**이라고 부릅니다. 물이 100도가 되어야 갑자기 끓듯, 어느 임계점을 넘자 질적으로 다른 존재가 된 셈입니다.</p>
+    <p>구체적인 예를 하나 들어볼게요. 2020년 OpenAI가 공개한 **GPT-3**는 1,750억 개의 파라미터를 가진 LLM입니다. 연구자들이 GPT-3에게 &quot;셰익스피어 스타일로 시를 써줘&quot;라고 했더니, 학습 데이터에 그 지시를 따르는 법을 명시적으로 배운 적이 없는데도 그럴듯한 시를 써냈습니다. 모두를 놀라게 한 이 순간이 LLM 시대의 문을 활짝 연 사건으로 기억됩니다.</p>
+    <p>오늘 찾아보시면 좋을 키워드는 **&#x27;GPT-3 논문 (Language Models are Few-Shot Learners)&#x27;** 입니다. 어렵더라도 초록(요약)만 읽어보셔도 그 충격이 느껴집니다.</p>
+    <p>---</p>
+    <p>**🔑 오늘의 핵심:** LLM은 &#x27;다음 단어 예측&#x27;이라는 단순한 목표를 엄청난 규모로 반복하면서, 예상을 뛰어넘는 언어 능력을 갖게 된 AI입니다.</p></div>
+    <div class="next">🔜 다음 시간: AI 공부 — 사전학습과 파인튜닝</div>
+    <div class="foot">
+      <a href="../">📚 지난 강의 전체 보기</a>
+      <span class="sub">매일 아침 · 나의 교양 강의</span>
+    </div>
+  </div>
+</body>
+</html>
